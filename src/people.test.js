@@ -10,28 +10,47 @@ const expect = require("expect");
 
 describe('People without animals', function () {
 
+    const bob = new People({"name":"Bob", "animals":[]});
+
     it('shouldGetNoAnimals_whenBobHasNoAnimals', function () {
-        let bob = new People('Bob', []);
         expect.expect(bob.filterAnimals('abc')).toEqual([]);
     });
+    it('shouldHaveNoInfoAboutBob_whenBobHasNoAnimals', function () {
+        expect.expect(bob.getPeopleWithAnimalsFiltered('abc')).toEqual(null);
+    });
+
 });
 describe('People with animals', function () {
 
-    const animals = ['abc', 'bca', 'cba', 'bac', 'cab'];
+    const animals = [{'name': 'abc'}, {'name':'bca'}, {'name':'cba'}, {'name':'bac'}, {'name':'cab'}];
     let bob;
 
     beforeEach(function () {
-        bob = new People('Bob', animals);
+        bob = new People({"name":"Bob", "animals":animals});
     });
 
     it('shouldGetAllAnimals_whenBobHasAllAnimalsMatchingThePattern', function () {
-        expect.expect(bob.filterAnimals('a')).toEqual(animals);
+        expect.expect(bob.filterAnimals('a')).toEqual(animals.map(animal => animal.name));
     });
     it('shouldGetOnlyAnimalsMatchingThePattern_whenBobHasAnimalsMatchingThePattern', function () {
         expect.expect(bob.filterAnimals('ab')).toEqual(['abc', 'cab']);
     });
     it('shouldGetNoAnimals_whenBobHasNoAnimalsMatchingThePattern', function () {
         expect.expect(bob.filterAnimals('d')).toEqual([]);
+    });
+    it('shouldHaveInfoAboutBob_whenBobAnimalsMatchingThePattern', function () {
+
+        const resultExpected = {
+            "name":"Bob",
+            "animals":[
+                {
+                    "name":"abc"
+                }
+            ]
+        }
+
+        expect.expect(bob.getPeopleWithAnimalsFiltered('abc')).toEqual(resultExpected);
+
     });
 
 });
