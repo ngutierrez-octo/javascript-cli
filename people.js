@@ -5,7 +5,8 @@ class People {
     }
 
     filterAnimals(pattern) {
-        return this.animals;
+        const regex = new RegExp(pattern)
+        return this.animals.filter(animal => regex.test(animal));
     }
 }
 

@@ -9,13 +9,23 @@ const expect = require("expect");
 * */
 
 describe('People', function () {
+
+
     it('shouldGetNoAnimals_whenBobHasNoAnimals', function () {
         const bob = new People('Bob', []);
         expect.expect(bob.filterAnimals('toto')).toEqual([]);
     });
     it('shouldGetAllAnimals_whenBobHasAllAnimalsMatchingThePattern', function () {
-        const bob = new People('Bob', ['toto', 'ototo','ototoo']);
-        expect.expect(bob.filterAnimals('toto')).toEqual(['toto', 'ototo','ototoo']);
+        const bob = new People('Bob', ['toto', 'ototoo','ototoo']);
+        expect.expect(bob.filterAnimals('toto')).toEqual(['toto', 'ototoo','ototoo']);
+    });
+    it('shouldGetOnlyAnimalsMatchingThePattern_whenBobHasAnimalsMatchingThePattern', function () {
+        const bob = new People('Bob', ['toto', 'ototoo','otooo']);
+        expect.expect(bob.filterAnimals('toto')).toEqual(['toto', 'ototoo']);
+    });
+    it('shouldGetNoAnimals_whenBobHasNoAnimalsMatchingThePattern', function () {
+        const bob = new People('Bob', ['tot', 'otoo','otooo']);
+        expect.expect(bob.filterAnimals('toto')).toEqual([]);
     });
 
 });
