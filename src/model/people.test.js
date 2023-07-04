@@ -13,10 +13,11 @@ describe('People without animals', function () {
     const bob = new People({"name":"Bob", "animals":[]});
 
     it('shouldGetNoAnimals_whenBobHasNoAnimals', function () {
-        expect.expect(bob.filterAnimals('abc')).toEqual([]);
-    });
-    it('shouldHaveNoInfoAboutBob_whenBobHasNoAnimals', function () {
-        expect.expect(bob.getPeopleWithAnimalsFiltered('abc')).toEqual(null);
+        //when
+        bob.filterAnimals('abc');
+        //then
+        const expectedAnimals = []
+        expect.expect(bob.animals).toEqual(expectedAnimals);
     });
 
 });
@@ -30,16 +31,31 @@ describe('People with animals', function () {
     });
 
     it('shouldGetAllAnimals_whenBobHasAllAnimalsMatchingThePattern', function () {
-        expect.expect(bob.filterAnimals('a')).toEqual(animals.map(animal => animal.name));
+        //when
+        bob.filterAnimals('a')
+        //then
+        const expectedAnimals = animals
+        expect.expect(bob.animals).toEqual(expectedAnimals);
     });
     it('shouldGetOnlyAnimalsMatchingThePattern_whenBobHasAnimalsMatchingThePattern', function () {
-        expect.expect(bob.filterAnimals('ab')).toEqual(['abc', 'cab']);
+        //when
+        bob.filterAnimals('ab')
+        //then
+        const expectedAnimals = [{'name': 'abc'}, {'name':'cab'}];
+        expect.expect(bob.animals).toEqual(expectedAnimals);
     });
     it('shouldGetNoAnimals_whenBobHasNoAnimalsMatchingThePattern', function () {
-        expect.expect(bob.filterAnimals('d')).toEqual([]);
+        //when
+        bob.filterAnimals('d')
+        //then
+        const expectedAnimals = [];
+        expect.expect(bob.animals).toEqual(expectedAnimals);
     });
     it('shouldHaveInfoAboutBob_whenBobAnimalsMatchingThePattern', function () {
 
+        //when
+        bob.filterAnimals('abc')
+        //then
         const resultExpected = {
             "name":"Bob",
             "animals":[
@@ -48,8 +64,7 @@ describe('People with animals', function () {
                 }
             ]
         }
-
-        expect.expect(bob.getPeopleWithAnimalsFiltered('abc')).toEqual(resultExpected);
+        expect.expect(bob).toEqual(resultExpected);
 
     });
 

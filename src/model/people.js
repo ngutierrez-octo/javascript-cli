@@ -1,28 +1,18 @@
+const Animal = require("./animal");
+
 class People {
     constructor(people) {
 
         this.name = people.name;
-        this.animals = people.animals.map(animal => animal.name);
+        this.animals = people.animals.map(animal => new Animal(animal.name));
     }
-
+    hasAnimals(){
+        return this.animals.length >0;
+    }
     filterAnimals(pattern) {
-        const regex = new RegExp(pattern)
-        return this.animals.filter(animal => regex.test(animal));
+        this.animals = this.animals.filter(animal => animal.isMatching(pattern));
     }
 
-    getPeopleWithAnimalsFiltered(pattern){
-        let animals = this.filterAnimals(pattern).map(animal => ({ name: animal }))
-
-        if (animals.length)
-            return {
-                "name": this.name,
-                "animals": animals
-            }
-        return null
-
-
-
-    }
 }
 
 module.exports = People
