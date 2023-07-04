@@ -1,4 +1,4 @@
-const Animal = require("./animal");
+const Animal = require('./animal');
 
 class People {
     constructor(people) {
@@ -12,7 +12,7 @@ class People {
         this.animals = this.animals.filter(animal => animal.isMatching(pattern));
     }
     countAnimals() {
-        this.name = this.name.concat(" [", this.animals.length, "]")
+        this.name = this.name.concat(' [', this.animals.length, ']')
     }
 }
 

@@ -1,5 +1,5 @@
 const People = require('./people');
-const expect = require("expect");
+const expect = require("expect").expect;
 
 /* Test List
 * should return an empty list when no animals match the pattern
@@ -17,7 +17,7 @@ describe('People without animals', () => {
         bob.filterAnimals('abc');
         //then
         const expectedAnimals = []
-        expect.expect(bob.animals).toEqual(expectedAnimals);
+        expect(bob.animals).toEqual(expectedAnimals);
     });
 
     it('shouldGetPeopleWith0AsCount_whenBobHasNoAnimals', () => {
@@ -28,7 +28,7 @@ describe('People without animals', () => {
             "name": "Bob [0]",
             "animals": []
         }
-        expect.expect(bob).toEqual(expectedResult);
+        expect(bob).toEqual(expectedResult);
     });
 
 });
@@ -45,21 +45,21 @@ describe('People with animals', () => {
         //when
         bob.filterAnimals('a')
         //then
-        expect.expect(bob.animals).toEqual(animals);
+        expect(bob.animals).toEqual(animals);
     });
     it('shouldGetOnlyAnimalsMatchingThePattern_whenBobHasAnimalsMatchingThePattern', () => {
         //when
         bob.filterAnimals('ab')
         //then
         const expectedAnimals = [{'name': 'abc'}, {'name':'cab'}];
-        expect.expect(bob.animals).toEqual(expectedAnimals);
+        expect(bob.animals).toEqual(expectedAnimals);
     });
     it('shouldGetNoAnimals_whenBobHasNoAnimalsMatchingThePattern', () => {
         //when
         bob.filterAnimals('d')
         //then
         const expectedAnimals = [];
-        expect.expect(bob.animals).toEqual(expectedAnimals);
+        expect(bob.animals).toEqual(expectedAnimals);
     });
     it('shouldHaveInfoAboutBob_whenBobAnimalsMatchingThePattern', () => {
 
@@ -74,7 +74,7 @@ describe('People with animals', () => {
                 }
             ]
         }
-        expect.expect(bob).toEqual(resultExpected);
+        expect(bob).toEqual(resultExpected);
 
     });
 
@@ -87,7 +87,7 @@ describe('People with animals', () => {
             "name":"Bob [5]",
             "animals": animals
         }
-        expect.expect(bob).toEqual(resultExpected);
+        expect(bob).toEqual(resultExpected);
     });
 
 
