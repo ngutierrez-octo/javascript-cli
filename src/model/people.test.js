@@ -20,6 +20,17 @@ describe('People without animals', () => {
         expect.expect(bob.animals).toEqual(expectedAnimals);
     });
 
+    it('shouldGetPeopleWith0AsCount_whenBobHasNoAnimals', () => {
+        //when
+        bob.countAnimals();
+        //then
+        const expectedResult = {
+            "name": "Bob [0]",
+            "animals": []
+        }
+        expect.expect(bob).toEqual(expectedResult);
+    });
+
 });
 describe('People with animals', () => {
 
@@ -66,5 +77,19 @@ describe('People with animals', () => {
         expect.expect(bob).toEqual(resultExpected);
 
     });
+
+    it('shouldGetPeopleWith1AsCount_whenBobHas5Animals', () => {
+
+        //when
+        bob.countAnimals()
+        //then
+        const resultExpected = {
+            "name":"Bob [5]",
+            "animals": animals
+        }
+        expect.expect(bob).toEqual(resultExpected);
+    });
+
+
 
 });

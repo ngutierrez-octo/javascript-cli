@@ -11,7 +11,9 @@ class People {
     filterAnimals(pattern) {
         this.animals = this.animals.filter(animal => animal.isMatching(pattern));
     }
-
+    countAnimals() {
+        this.name = this.name.concat(" [", this.animals.length, "]")
+    }
 }
 
 module.exports = People
