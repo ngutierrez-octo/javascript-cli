@@ -1,7 +1,7 @@
 const Countries = require('./countries');
 const expect = require("expect").expect;
 
-describe('Countries', function () {
+describe('Countries', () =>{
 
     const france = {
         "name": "France",
@@ -30,7 +30,7 @@ describe('Countries', function () {
     let countries = new Countries([france, spain]);
 
 
-    it('shouldHaveInfoAboutFrance_whenFranceHasAnimalsMatchingThePattern', function () {
+    it('shouldHaveInfoAboutFrance_whenFranceHasAnimalsMatchingThePattern', () => {
         //when
         countries.filterAnimals('cab')
         //then

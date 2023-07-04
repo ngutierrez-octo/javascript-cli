@@ -1,7 +1,6 @@
 const Country = require("./country");
 
 class Countries{
-    countries;
     constructor(countries) {
          this.countries = countries.map(country => new Country(country));
     }

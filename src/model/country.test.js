@@ -1,20 +1,19 @@
 const Country = require('./country');
-const expect = require("expect");
-const People = require("./people");
+const expect = require("expect").expect;
 
-describe('Country without peoples', function () {
+describe('Country without peoples', () => {
     let france = new Country({"name":'France', "people":[]})
 
-    it('shouldGetNoPeople_whenNoPeopleInTheCountry', function () {
+    it('shouldGetNoPeople_whenNoPeopleInTheCountry', () => {
         //when
         france.filterAnimals('d')
         //then
-        expect.expect(france.peoples).toEqual([]);
+        expect(france.peoples).toEqual([]);
     });
 
 });
 
-describe('Country with peoples', function () {
+describe('Country with peoples', () => {
 
     const bob = {
         "name":"Bob",
@@ -37,24 +36,24 @@ describe('Country with peoples', function () {
     };
     let france;
 
-    beforeEach(function () {
+    beforeEach(() => {
         france = new Country({"name":'France', "people":[bob, jack]})
     });
 
 
-    it('shouldGetNoPeople_whenNoPeopleHasAnimalsMatchingTheFilter', function () {
+    it('shouldGetNoPeople_whenNoPeopleHasAnimalsMatchingTheFilter', () => {
         //when
         france.filterAnimals('d')
         //then
-        expect.expect(france.peoples).toEqual([]);
+        expect(france.peoples).toEqual([]);
     });
-    it('shouldGetBob_whenOnlyBobHasAnimalsMatchingTheFilter', function () {
+    it('shouldGetBob_whenOnlyBobHasAnimalsMatchingTheFilter', () => {
         //when
         france.filterAnimals('abc')
         //then
-        expect.expect(france.peoples).toEqual([bob]);
+        expect(france.peoples).toEqual([bob]);
     });
-    it('shouldHaveInfoAboutBob_whenBobHasAnAnimalMatchingThePattern', function () {
+    it('shouldHaveInfoAboutBob_whenBobHasAnAnimalMatchingThePattern', () => {
         //when
         france.filterAnimals('cab')
         //then
@@ -70,10 +69,7 @@ describe('Country with peoples', function () {
             }]
         }
 
-        expect.expect(france).toEqual(resultExpected);
+        expect(france).toEqual(resultExpected);
 
     });
-
-
-
 });

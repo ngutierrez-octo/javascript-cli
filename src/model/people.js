@@ -2,7 +2,6 @@ const Animal = require("./animal");
 
 class People {
     constructor(people) {
-
         this.name = people.name;
         this.animals = people.animals.map(animal => new Animal(animal.name));
     }

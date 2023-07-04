@@ -8,11 +8,11 @@ const expect = require("expect");
 *
 * */
 
-describe('People without animals', function () {
+describe('People without animals', () => {
 
     const bob = new People({"name":"Bob", "animals":[]});
 
-    it('shouldGetNoAnimals_whenBobHasNoAnimals', function () {
+    it('shouldGetNoAnimals_whenBobHasNoAnimals', () => {
         //when
         bob.filterAnimals('abc');
         //then
@@ -21,37 +21,36 @@ describe('People without animals', function () {
     });
 
 });
-describe('People with animals', function () {
+describe('People with animals', () => {
 
     const animals = [{'name': 'abc'}, {'name':'bca'}, {'name':'cba'}, {'name':'bac'}, {'name':'cab'}];
     let bob;
 
-    beforeEach(function () {
+    beforeEach(() => {
         bob = new People({"name":"Bob", "animals":animals});
     });
 
-    it('shouldGetAllAnimals_whenBobHasAllAnimalsMatchingThePattern', function () {
+    it('shouldGetAllAnimals_whenBobHasAllAnimalsMatchingThePattern', () => {
         //when
         bob.filterAnimals('a')
         //then
-        const expectedAnimals = animals
-        expect.expect(bob.animals).toEqual(expectedAnimals);
+        expect.expect(bob.animals).toEqual(animals);
     });
-    it('shouldGetOnlyAnimalsMatchingThePattern_whenBobHasAnimalsMatchingThePattern', function () {
+    it('shouldGetOnlyAnimalsMatchingThePattern_whenBobHasAnimalsMatchingThePattern', () => {
         //when
         bob.filterAnimals('ab')
         //then
         const expectedAnimals = [{'name': 'abc'}, {'name':'cab'}];
         expect.expect(bob.animals).toEqual(expectedAnimals);
     });
-    it('shouldGetNoAnimals_whenBobHasNoAnimalsMatchingThePattern', function () {
+    it('shouldGetNoAnimals_whenBobHasNoAnimalsMatchingThePattern', () => {
         //when
         bob.filterAnimals('d')
         //then
         const expectedAnimals = [];
         expect.expect(bob.animals).toEqual(expectedAnimals);
     });
-    it('shouldHaveInfoAboutBob_whenBobAnimalsMatchingThePattern', function () {
+    it('shouldHaveInfoAboutBob_whenBobAnimalsMatchingThePattern', () => {
 
         //when
         bob.filterAnimals('abc')
