@@ -6,7 +6,10 @@ describe('Country without peoples', function () {
     let france = new Country({"name":'France', "people":[]})
 
     it('shouldGetNoPeople_whenNoPeopleInTheCountry', function () {
-        expect.expect(france.getCountryWithAnimalsFiltered('d')).toEqual(null);
+        //when
+        france.filterAnimals('d')
+        //then
+        expect.expect(france.peoples).toEqual([]);
     });
 
 });
@@ -40,16 +43,24 @@ describe('Country with peoples', function () {
 
 
     it('shouldGetNoPeople_whenNoPeopleHasAnimalsMatchingTheFilter', function () {
-        expect.expect(france.getCountryWithAnimalsFiltered('d')).toEqual(null);
+        //when
+        france.filterAnimals('d')
+        //then
+        expect.expect(france.peoples).toEqual([]);
     });
     it('shouldGetBob_whenOnlyBobHasAnimalsMatchingTheFilter', function () {
-        expect.expect(france.getCountryWithAnimalsFiltered('abc').people).toEqual([bob]);
+        //when
+        france.filterAnimals('abc')
+        //then
+        expect.expect(france.peoples).toEqual([bob]);
     });
     it('shouldHaveInfoAboutBob_whenBobHasAnAnimalMatchingThePattern', function () {
-
+        //when
+        france.filterAnimals('cab')
+        //then
         const resultExpected = {
             "name": "France",
-            "people": [{
+            "peoples": [{
                 "name":"Bob",
                 "animals":[
                     {
@@ -59,7 +70,7 @@ describe('Country with peoples', function () {
             }]
         }
 
-        expect.expect(france.getCountryWithAnimalsFiltered('cab')).toEqual(resultExpected);
+        expect.expect(france).toEqual(resultExpected);
 
     });
 
