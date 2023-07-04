@@ -1,6 +1,6 @@
-const Country = require('../src/country');
+const Country = require('./country');
 const expect = require("expect");
-const People = require("../src/people");
+const People = require("./people");
 
 describe('Country without peoples', function () {
     let france = new Country({"name":'France', "people":[]})

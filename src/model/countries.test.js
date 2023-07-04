@@ -1,4 +1,4 @@
-const Countries = require('../src/countries');
+const Countries = require('./countries');
 const expect = require("expect");
 
 describe('Countries', function () {

@@ -1,5 +1,5 @@
-const Countries = require("./countries");
-const data = require("./data").data;
+const Countries = require("./src/model/countries");
+const data = require("./src/data").data;
 
 const countries = new Countries(data)
 

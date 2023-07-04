@@ -1,4 +1,4 @@
-const People = require('../src/people');
+const People = require('./people');
 const expect = require("expect");
 
 /* Test List
