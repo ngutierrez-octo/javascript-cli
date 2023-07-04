@@ -1,5 +1,5 @@
 const Countries = require('./countries');
-const expect = require("expect");
+const expect = require("expect").expect;
 
 describe('Countries', function () {
 
@@ -31,10 +31,12 @@ describe('Countries', function () {
 
 
     it('shouldHaveInfoAboutFrance_whenFranceHasAnimalsMatchingThePattern', function () {
-
+        //when
+        countries.filterAnimals('cab')
+        //then
         const resultExpected = [{
             "name": "France",
-            "people": [{
+            "peoples": [{
                 "name":"Bob",
                 "animals":[
                     {
@@ -44,10 +46,8 @@ describe('Countries', function () {
             }]
         }]
 
-        expect.expect(countries.filterByAnimals('cab')).toEqual(resultExpected);
+        expect(countries.toJson()).toEqual(resultExpected);
 
     });
-
-
 
 });
