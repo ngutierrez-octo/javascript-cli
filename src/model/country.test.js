@@ -1,8 +1,8 @@
 const Country = require('./country');
-const expect = require("expect").expect;
+const expect = require('expect').expect;
 
 describe('Country without peoples', () => {
-    let france = new Country({"name":'France', "people":[]})
+    let france = new Country({'name':'France', 'people':[]})
 
     it('shouldGetNoPeople_whenNoPeopleInTheCountry', () => {
         //when
@@ -11,33 +11,40 @@ describe('Country without peoples', () => {
         expect(france.peoples).toEqual([]);
     });
 
+    it('shouldGetCountryWith0AsCount_whenNoPeopleInTheCountry', () => {
+        //when
+        france.countPeoples();
+        //then
+        expect(france.name).toEqual('France [0]');
+    });
+
 });
 
 describe('Country with peoples', () => {
 
     const bob = {
-        "name":"Bob",
-        "animals":[
+        'name':'Bob',
+        'animals':[
             {
-                "name":"abc"
+                'name':'abc'
             },
             {
-                "name":"cabc"
+                'name':'cabc'
             }
         ]
     };
     const jack = {
-        "name":"Jack",
-        "animals":[
+        'name':'Jack',
+        'animals':[
             {
-                "name":"bca"
+                'name':'bca'
             }
         ]
     };
     let france;
 
     beforeEach(() => {
-        france = new Country({"name":'France', "people":[bob, jack]})
+        france = new Country({'name':'France', 'people':[bob, jack]})
     });
 
 
@@ -58,12 +65,12 @@ describe('Country with peoples', () => {
         france.filterAnimals('cab')
         //then
         const resultExpected = {
-            "name": "France",
-            "peoples": [{
-                "name":"Bob",
-                "animals":[
+            'name': 'France',
+            'peoples': [{
+                'name':'Bob',
+                'animals':[
                     {
-                        "name":"cabc"
+                        'name':'cabc'
                     }
                 ]
             }]
@@ -72,4 +79,16 @@ describe('Country with peoples', () => {
         expect(france).toEqual(resultExpected);
 
     });
+
+    it('shouldGetCountryWith1AsCount_when1PeopleInTheCountry', () => {
+        //when
+        france.countPeoples();
+        //then
+
+        expect(france.name).toEqual('France [2]');
+        expect(france.peoples[0].name).toEqual('Bob [2]');
+        expect(france.peoples[1].name).toEqual('Jack [1]');
+
+    });
+
 });

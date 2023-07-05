@@ -1,27 +1,27 @@
 const Countries = require('./countries');
-const expect = require("expect").expect;
+const expect = require('expect').expect;
 
 describe('Countries', () =>{
 
     const france = {
-        "name": "France",
-        "people": [{
-            "name":"Bob",
-            "animals":[
+        'name': 'France',
+        'people': [{
+            'name':'Bob',
+            'animals':[
                 {
-                    "name":"cabc"
+                    'name':'cabc'
                 }
             ]
         }]
     }
 
     const spain = {
-        "name": "Spain",
-        "people": [{
-            "name":"Franck",
-            "animals":[
+        'name': 'Spain',
+        'people': [{
+            'name':'Franck',
+            'animals':[
                 {
-                    "name":"acb"
+                    'name':'acb'
                 }
             ]
         }]
@@ -35,12 +35,12 @@ describe('Countries', () =>{
         countries.filterAnimals('cab')
         //then
         const resultExpected = [{
-            "name": "France",
-            "peoples": [{
-                "name":"Bob",
-                "animals":[
+            'name': 'France',
+            'peoples': [{
+                'name':'Bob',
+                'animals':[
                     {
-                        "name":"cabc"
+                        'name':'cabc'
                     }
                 ]
             }]
@@ -48,6 +48,13 @@ describe('Countries', () =>{
 
         expect(countries.toJson()).toEqual(resultExpected);
 
+    });
+
+    it('shouldGetCountriesWithPeopleCounts', () => {
+        //when
+        countries.countPeoples();
+        //then
+        expect (countries.countries.every(country => country.name.endsWith("[1]"))).toBeTruthy()
     });
 
 });

@@ -1,4 +1,4 @@
-const People = require("./people");
+const People = require('./people');
 
 class Country {
     constructor(country) {
@@ -15,6 +15,10 @@ class Country {
         this.peoples = this.peoples.filter(people => people.hasAnimals());
     }
 
+    countPeoples() {
+        this.name = this.name.concat(' [', this.peoples.length, ']')
+        this.peoples.forEach(people => people.countAnimals())
+    }
 }
 
 module.exports = Country

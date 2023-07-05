@@ -1,4 +1,4 @@
-const Country = require("./country");
+const Country = require('./country');
 
 class Countries{
     constructor(countries) {
@@ -11,6 +11,10 @@ class Countries{
 
     toJson(){
         return JSON.parse(JSON.stringify(this.countries))
+    }
+
+    countPeoples() {
+        this.countries.forEach(country => country.countPeoples())
     }
 }
 

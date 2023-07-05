@@ -1,5 +1,5 @@
-const Animal = require("./animal");
-const expect = require("expect").expect;
+const Animal = require('./animal');
+const expect = require('expect').expect;
 
 describe('Animal', () => {
 
